@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom"
+
 import { useRef, useState, useEffect, useContext } from 'react';
 import AuthContext from "../context/AuthProvider";
 import axios from 'axios';
+
 const LOGIN_URL = 'http://127.0.0.1:8000/user/signin/';
 
 const Login = () => {
@@ -29,7 +30,7 @@ const Login = () => {
             const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ email, password }), {
                     headers: {
-                        "Content-Type": 'application/json',
+                        "Content-Type":'application/json',
                     },
                 });
             console.log(JSON.stringify(response?.data));
@@ -67,16 +68,17 @@ const Login = () => {
                     </p>
                 </section>
             ) : (
-                <div className="container">
-                    <section>
+                <div className="login_container">
+                    <section className='login_section'>
                         <p ref={errRef} className={errMsg ? "errmsg" :
                             "offscreen"} aria-live="assertive">{errMsg}</p>
-                        <img width="185" height="70" src="./image/pngegg.png"></img>
+                        <img className='login_img' width="185" height="70" src="./image/pngegg.png"></img>
                         <div className="login">
                             <form onSubmit={handleSubmit}> {/*form전송을 하기 전 입력된 데이터의 유효성 체크하는 것*/}
                                 <div className="name">
                                     <label htmlFor="useremail"></label>
                                     <input
+                                        className='login_input'
                                         type="text"
                                         id="useremail"
                                         ref={userRef}
@@ -90,6 +92,7 @@ const Login = () => {
                                 <div className="pwd">
                                     <label htmlFor="password"></label>
                                     <input
+                                        className='login_input'
                                         type="password"
                                         id="password"
                                         ref={userRef}
@@ -100,15 +103,9 @@ const Login = () => {
                                         placeholder="비밀번호"
                                     />
                                 </div>
-                                <button>Sign In</button>
+                                <button className='login_button'>Sign In</button>
                             </form>
                         </div>
-                        <p>
-                            Need an Account?<br />
-                            <span className="line">
-                                <a href="#">Sign Up"</a>
-                            </span>
-                        </p>
                     </section>
                 </div>
             )}

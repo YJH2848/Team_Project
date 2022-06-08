@@ -5,7 +5,7 @@ export default function real() {
             <nav>
             <div className="navbar-container">
                 <div className="navbar">
-                    <div className="logo-section">Instagram</div>
+                    <div className="logo-section">Kimstagram</div>
                     <div className="searchbar-section">
                     <input placeholder="검색"></input>
                     </div>
