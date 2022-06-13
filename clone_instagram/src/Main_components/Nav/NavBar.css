@@ -1,0 +1,39 @@
+*{
+  text-decoration: none;
+  color: inherit;
+}
+.logo{
+  font-family: 'Lobster', cursive;
+  color: black;
+  font-size: 150%;
+}
+a
+{
+  color: black;
+
+}
+.search {
+  position: relative;
+  width: 300px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.Magnifier {
+  position : absolute;
+  width: 17px;
+  top: 10px;
+  right: 12px;
+  margin: 0;
+}
+.size{
+  margin: 0;
+}
+
+/**/
