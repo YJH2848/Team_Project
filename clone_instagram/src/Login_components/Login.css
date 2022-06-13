@@ -1,0 +1,18 @@
+
+.login{
+    position:absolute;
+    right: 31%;
+    width: 350px;
+    height: 395px;
+    background-color: wheat;
+    margin:0;
+}
+.left{
+    float: left;
+    position: absolute;
+    
+}
+.container{
+    text-align: center;
+}
+/* 위 오 아 왼 */
