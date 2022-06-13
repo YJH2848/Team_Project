@@ -174,7 +174,7 @@ export default function real() {
                 여기 게시물이다.
                 여기 게시물이다.
                 여기 게시물이다.
-
+                여기 게시물이다.
             </div>
         </Link>
     )
