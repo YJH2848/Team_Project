@@ -2,11 +2,17 @@ import { Link } from 'react-router-dom';
 export default function real() {
     return (
         <Link to="/main" style={{ textDecoration: 'none', color: 'inherit', cursor: 'default' }}>
-            <nav class="navbar navbar-light bg-light">
-                <img className="logo" width="110" height="40" src='./image/pngegg.png'></img>
-                <div className="search">
-                    <input class="form-control mr-sm-5" type="search" placeholder="검색" aria-label="Search" />
+            <nav>
+            <div className="navbar-container">
+                <div className="navbar">
+                    <div className="logo-section">Instagram</div>
+                    <div className="searchbar-section">
+                    <input placeholder="검색"></input>
+                    </div>
+                    <div className="actions-section">Actions</div>
                 </div>
+
+        </div>
             </nav>
             <div className="Side">
                 SideBar(제발 신중하게 보고 진행하자 제발^^)

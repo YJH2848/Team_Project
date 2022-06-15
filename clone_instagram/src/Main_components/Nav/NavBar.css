@@ -1,6 +1,18 @@
-.logo{
-  margin-left: 20%;
+.navbar-container{   
+  border-bottom: 1px solid rgb(220,220,220);
 }
-.search{
-  margin-right: 40%;
+nav{
+  background-color: white;
+}
+.navbar{
+  width: 960px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-section{
+  font-family: 'Lobster', cursive;
+  font-size: 25px;
 }

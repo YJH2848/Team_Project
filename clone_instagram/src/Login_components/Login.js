@@ -1,14 +1,108 @@
 import { Link } from "react-router-dom"
+import { useRef, useState, useEffect } from 'react';
+const Login = () => {
+    const userRef = useRef();
+    const errRef = useRef();
 
-export default function Login() {
+    const [user, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        userRef.current.focus();
+
+    }, [])
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, pwd])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(user, pwd);
+        setUser('');
+        setPwd('');
+        setSuccess(true);
+    }
     return (
-        <Link to="/" style={{ textDecoration: 'none', color: 'inherit', cursor: 'default' }}>
+        <>
+            {success ? (
+                <section>
+                    <h1>You are logged in!</h1>
+                    <br />
+                    <p>
+                        <a href="#">Go to Home</a>
+                    </p>
+                </section>
+            ) : (
             <div className="container">
-                <img width="420" height="600" src="	https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png"></img>
-                <div className="title" >
+                <section>
+                    <p ref={errRef} className={errMsg ? "errmsg" :
+                        "offscreen"} aria-live="assertive">{errMsg}</p>
                     <img width="185" height="70" src="./image/pngegg.png"></img>
+                    <div className="login">
+                        <form onSubmit={handleSubmit}>
+                            <div className="name">
+                                <label htmlFor="username"></label>
+                                <input
+                                    type="text"
+                                    id="username"
+                                    ref={userRef}
+                                    autoComplete="off"
+                                    onChange={(e) => setUser(e.target.value)}
+                                    value={user}
+                                    required
+                                    placeholder="사용자 이름 또는 이메일"
+                                />
+                            </div>
+                            <div className="pwd">
+                                <label htmlFor="password"></label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    ref={userRef}
+                                    autoComplete="off"
+                                    onChange={(e) => setPwd(e.target.value)}
+                                    value={pwd}
+                                    required
+                                    placeholder="비밀번호"
+                                />
+                            </div>
+                            <button>Sign In</button>
+                        </form>
+                    </div>
+                    <p>
+                        Need an Account?<br />
+                        <span className="line">
+                            <a href="#">Sign Up"</a>
+                        </span>
+                    </p>
+                </section>
                 </div>
-            </div>
-        </Link>
+            )}
+        </>
     )
 }
+
+export default Login
+    // export default function Login() {
+    //     return (
+    //         <Link to="/" style={{ textDecoration: 'none', color: 'inherit', cursor: 'default' }}>
+    //             {/* <body>
+    //                 <div className="container">
+    //                     <img width="450" height="600" src="	https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png"></img>
+    //                     <div className="login" >
+    //                         <img width="185" height="70" src="./image/pngegg.png"></img>
+    //                         <input placeholder="  전화번호, 사용자 이름 또는 이메일" />
+    //                         <input placeholder="  비밀번호" /><br></br>
+    //                         <button>로그인</button>
+    //                     </div>
+
+    //                 </div>
+    //             </body> */}
+
+    //         </Link>
+
+    //     )
+    // }
+
