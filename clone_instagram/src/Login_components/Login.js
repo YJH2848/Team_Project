@@ -85,7 +85,7 @@ const Login = () => {
 }
 
 export default Login
-    // export default function Login() {
+    // export default function Login() { //보존
     //     return (
     //         <Link to="/" style={{ textDecoration: 'none', color: 'inherit', cursor: 'default' }}>
     //             {/* <body>
