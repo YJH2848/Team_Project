@@ -10,7 +10,7 @@ const Login = () => {
     const errRef = useRef();
 
     const [email, setEmail] = useState('');
-    const [pwd, setPwd] = useState('');
+    const [password, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
@@ -20,20 +20,23 @@ const Login = () => {
     }, [])
     useEffect(() => {
         setErrMsg('');
-    }, [email, pwd])
+    }, [email, password])
 
     const handleSubmit = async (e) => {
         e.preventDefault(); {/*(e)코드를 작동하지 못하게 하는 메서드*/}
 
         try {
             const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ email: email, pwd: pwd })
-            );
+                JSON.stringify({ email, password }), {
+                    headers: {
+                        "Content-Type": 'application/json',
+                    },
+                });
             console.log(JSON.stringify(response?.data));
             //console.log(JSON.stringify(response));
             const token = response?.data?.token;
             const roles = response?.data?.roles;
-            setAuth({ email: email, pwd, roles, token });
+            setAuth({ email, password, roles, token });
             setEmail('');
             setPwd('');
             setSuccess(true);
@@ -92,7 +95,7 @@ const Login = () => {
                                         ref={userRef}
                                         autoComplete="off"
                                         onChange={(e) => setPwd(e.target.value)}
-                                        value={pwd}
+                                        value={password}
                                         required
                                         placeholder="비밀번호"
                                     />
@@ -114,4 +117,3 @@ const Login = () => {
 }
 
 export default Login
-
