@@ -23,16 +23,21 @@ const Login = () => {
         setErrMsg('');
     }, [email, password])
 
+    // const onImgInputBtnClick = (event: any) => {
+    //     event.preventDefault();
+    //     logoImgInput.current.click();
+    // }
     const handleSubmit = async (e) => {
-        e.preventDefault(); {/*(e)코드를 작동하지 못하게 하는 메서드*/}
+        e.preventDefault(); {/*(e)코드를 작동하지 못하게 하는 메서드*/ }
 
         try {
             const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ email, password }), {
-                    headers: {
-                        "Content-Type":'application/json',
-                    },
-                });
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+            });
+
             console.log(JSON.stringify(response?.data));
             //console.log(JSON.stringify(response));
             const token = response?.data?.token;
@@ -70,41 +75,57 @@ const Login = () => {
             ) : (
                 <div className="login_container">
                     <section className='login_section'>
+                        <img className="smart_img" src='https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png'></img>
                         <p ref={errRef} className={errMsg ? "errmsg" :
                             "offscreen"} aria-live="assertive">{errMsg}</p>
-                        <img className='login_img' width="185" height="70" src="./image/pngegg.png"></img>
-                        <div className="login">
-                            <form onSubmit={handleSubmit}> {/*form전송을 하기 전 입력된 데이터의 유효성 체크하는 것*/}
-                                <div className="name">
-                                    <label htmlFor="useremail"></label>
-                                    <input
-                                        className='login_input'
-                                        type="text"
-                                        id="useremail"
-                                        ref={userRef}
-                                        autoComplete="off"
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        value={email}
-                                        required
-                                        placeholder="사용자 이름 또는 이메일"
-                                    />
-                                </div>
-                                <div className="pwd">
-                                    <label htmlFor="password"></label>
-                                    <input
-                                        className='login_input'
-                                        type="password"
-                                        id="password"
-                                        ref={userRef}
-                                        autoComplete="off"
-                                        onChange={(e) => setPwd(e.target.value)}
-                                        value={password}
-                                        required
-                                        placeholder="비밀번호"
-                                    />
-                                </div>
-                                <button className='login_button'>Sign In</button>
-                            </form>
+                        <div className='border'>
+                            <img className='login_img' width="185" height="70" src="./image/pngegg.png"></img>
+                            <div className="login">
+                                <form onSubmit={handleSubmit}> {/*form전송을 하기 전 입력된 데이터의 유효성 체크하는 것*/}
+                                    <div className="email">
+                                        <label htmlFor="useremail"></label>
+                                        <input
+                                            className='login_input'
+                                            type="text"
+                                            id="useremail"
+                                            ref={userRef}
+                                            autoComplete="off"
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            value={email}
+                                            required
+                                            placeholder="사용자 이름 또는 이메일"
+                                        />
+                                    </div>
+                                    <div className="pwd">
+                                        <label htmlFor="password"></label>
+                                        <input
+                                            className='login_input'
+                                            type="password"
+                                            id="password"
+                                            ref={userRef}
+                                            autoComplete="off"
+                                            onChange={(e) => setPwd(e.target.value)}
+                                            value={password}
+                                            required
+                                            placeholder="비밀번호"
+                                        />
+                                    </div>
+
+                                    <button className='login_button'>로그인</button>
+                                </form>
+                                {/* <div onSubmit={onImgInputBtnClick   }>
+                                        <input
+                                            ref={logoImgInput}
+                                            type='file'
+                                            className='imgInput'
+                                            id='logoImg'
+                                            accept='image/*'
+                                            name='file'
+                                            onChange={onImgChange} 
+                                        />
+
+                                    </div> */}
+                            </div>
                         </div>
                     </section>
                 </div>

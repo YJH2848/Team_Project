@@ -11,6 +11,7 @@ const Login = () => {
     const errRef = useRef();
 
     const [email, setEmail] = useState('');
+    const [nickname, setName] = useState('');
     const [password, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
@@ -21,14 +22,14 @@ const Login = () => {
     }, [])
     useEffect(() => {
         setErrMsg('');
-    }, [email, password])
+    }, [email, nickname, password])
 
     const handleSubmit = async (e) => {
         e.preventDefault(); {/*(e)코드를 작동하지 못하게 하는 메서드*/}
 
         try {
             const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ email, password }), {
+                JSON.stringify({ email, nickname, password }), {
                     headers: {
                         "Content-Type":'application/json',
                     },
@@ -37,7 +38,7 @@ const Login = () => {
             //console.log(JSON.stringify(response));
             const token = response?.data?.token;
             const roles = response?.data?.roles;
-            setAuth({ email, password, roles, token });
+            setAuth({ email, nickname, password, roles, token });
             setEmail('');
             setPwd('');
             setSuccess(true);
@@ -72,10 +73,11 @@ const Login = () => {
                     <section className='login_section'>
                         <p ref={errRef} className={errMsg ? "errmsg" :
                             "offscreen"} aria-live="assertive">{errMsg}</p>
+                    <div className='sign_border'>
                         <img className='sign_img' width="185" height="70" src="./image/pngegg.png"></img>
                         <div className="sign">
                             <form onSubmit={handleSubmit}> {/*form전송을 하기 전 입력된 데이터의 유효성 체크하는 것*/}
-                                <div className="name">
+                                <div className="email">
                                     <label htmlFor="useremail"></label>
                                     <input
                                         className='sign_input'
@@ -86,13 +88,27 @@ const Login = () => {
                                         onChange={(e) => setEmail(e.target.value)}
                                         value={email}
                                         required
-                                        placeholder="사용자 이름 또는 이메일"
+                                        placeholder="휴대폰 번호 또는 이메일 주소"
+                                    />
+                                </div>
+                                <div className="nickname">
+                                    <label htmlFor="nickname"></label>
+                                    <input
+                                        className='sign_input'
+                                        type="nickname"
+                                        id="nickname"
+                                        ref={userRef}
+                                        autoComplete="off"
+                                        onChange={(e) => setName(e.target.value)}
+                                        value={nickname}
+                                        required
+                                        placeholder="성명"
                                     />
                                 </div>
                                 <div className="pwd">
                                     <label htmlFor="password"></label>
                                     <input
-                                        className='sign_input'
+                                        className='login_input'
                                         type="password"
                                         id="password"
                                         ref={userRef}
@@ -105,6 +121,7 @@ const Login = () => {
                                 </div>
                                 <button className='sign_button'>Sign In</button>
                             </form>
+                            </div>
                         </div>
                     </section>
                 </div>
