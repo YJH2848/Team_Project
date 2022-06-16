@@ -76,10 +76,10 @@ const Login = () => {
                         <div className="login">
                             <form onSubmit={handleSubmit}>
                                 <div className="name">
-                                    <label htmlFor="username"></label>
+                                    <label htmlFor="useremail"></label>
                                     <input
                                         type="text"
-                                        id="username"
+                                        id="useremail"
                                         ref={userRef}
                                         autoComplete="off"
                                         onChange={(e) => setUser(e.target.value)}
@@ -118,24 +118,4 @@ const Login = () => {
 }
 
 export default Login
-    // export default function Login() {
-    //     return (
-    //         <Link to="/" style={{ textDecoration: 'none', color: 'inherit', cursor: 'default' }}>
-    //             {/* <body>
-    //                 <div className="container">
-    //                     <img width="450" height="600" src="	https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png"></img>
-    //                     <div className="login" >
-    //                         <img width="185" height="70" src="./image/pngegg.png"></img>
-    //                         <input placeholder="  전화번호, 사용자 이름 또는 이메일" />
-    //                         <input placeholder="  비밀번호" /><br></br>
-    //                         <button>로그인</button>
-    //                     </div>
-
-    //                 </div>
-    //             </body> */}
-
-    //         </Link>
-
-    //     )
-    // }
 
