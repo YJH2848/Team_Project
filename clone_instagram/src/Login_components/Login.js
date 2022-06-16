@@ -27,11 +27,7 @@ const Login = () => {
 
         try {
             const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ email: email, pwd: pwd }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
+                JSON.stringify({ email: email, pwd: pwd })
             );
             console.log(JSON.stringify(response?.data));
             //console.log(JSON.stringify(response));
@@ -74,7 +70,7 @@ const Login = () => {
                             "offscreen"} aria-live="assertive">{errMsg}</p>
                         <img width="185" height="70" src="./image/pngegg.png"></img>
                         <div className="login">
-                            <form onSubmit={handleSubmit}> {/*form전송을 하기 전 입력된 데이터의 유효성 체크*/}
+                            <form onSubmit={handleSubmit}> {/*form전송을 하기 전 입력된 데이터의 유효성 체크하는 것*/}
                                 <div className="name">
                                     <label htmlFor="useremail"></label>
                                     <input
