@@ -1,0 +1,23 @@
+.sign_button{
+    width: 264px;
+    height: 35px;
+    border: 0;
+    border: none;
+    background-color: #1BB8E3;
+    border-radius: 5px;
+    margin-top: 20px;
+
+}
+.sign_input{
+    width: 258px;
+    height: 40px;
+    font-size: 12px;
+    background-color: #FAFAFA;
+    border: 1px solid #e7e4e4;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.sign_img{
+    margin-left: 40px;
+    margin-top: 100px;
+}
