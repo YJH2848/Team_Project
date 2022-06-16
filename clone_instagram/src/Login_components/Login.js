@@ -2,14 +2,14 @@ import { Link } from "react-router-dom"
 import { useRef, useState, useEffect, useContext } from 'react';
 import AuthContext from "../context/AuthProvider";
 import axios from '../api/axios';
-const LOGIN_URL = '/auth';
+const LOGIN_URL = 'user/signin/';
 
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
 
-    const [user, setUser] = useState('');
+    const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
@@ -20,14 +20,14 @@ const Login = () => {
     }, [])
     useEffect(() => {
         setErrMsg('');
-    }, [user, pwd])
+    }, [email, pwd])
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); {/*(e)코드를 작동하지 못하게 하는 메서드*/}
 
         try {
             const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ user, pwd }),
+                JSON.stringify({ email: email, pwd: pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -37,8 +37,8 @@ const Login = () => {
             //console.log(JSON.stringify(response));
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            setAuth({ user, pwd, roles, accessToken });
-            setUser('');
+            setAuth({ email: email, pwd, roles, accessToken });
+            setEmail('');
             setPwd('');
             setSuccess(true);
         } catch (err) {
@@ -74,7 +74,7 @@ const Login = () => {
                             "offscreen"} aria-live="assertive">{errMsg}</p>
                         <img width="185" height="70" src="./image/pngegg.png"></img>
                         <div className="login">
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit}> {/*form전송을 하기 전 입력된 데이터의 유효성 체크*/}
                                 <div className="name">
                                     <label htmlFor="useremail"></label>
                                     <input
@@ -82,8 +82,8 @@ const Login = () => {
                                         id="useremail"
                                         ref={userRef}
                                         autoComplete="off"
-                                        onChange={(e) => setUser(e.target.value)}
-                                        value={user}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        value={email}
                                         required
                                         placeholder="사용자 이름 또는 이메일"
                                     />
