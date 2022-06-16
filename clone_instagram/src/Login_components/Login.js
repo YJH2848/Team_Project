@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 import { useRef, useState, useEffect, useContext } from 'react';
 import AuthContext from "../context/AuthProvider";
-import axios from '../api/axios';
-const LOGIN_URL = 'user/signin/';
+import axios from 'axios';
+const LOGIN_URL = 'http://127.0.0.1:8000/user/signin/';
 
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
@@ -31,9 +31,9 @@ const Login = () => {
             );
             console.log(JSON.stringify(response?.data));
             //console.log(JSON.stringify(response));
-            const accessToken = response?.data?.accessToken;
+            const token = response?.data?.token;
             const roles = response?.data?.roles;
-            setAuth({ email: email, pwd, roles, accessToken });
+            setAuth({ email: email, pwd, roles, token });
             setEmail('');
             setPwd('');
             setSuccess(true);
