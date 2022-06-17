@@ -10,11 +10,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from "./Login_components/Login";
 import Real from "./Main_components/Real";
 import Sign from "./Sign_components/Sign";
+// import Img from "./image_Post/img";
 const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+          {/* <Route path="/img" element={<Img />}></Route> */}
           <Route path="/main" element={<Real />}></Route>
           <Route path="/sign" element={<Sign />}></Route>
           <Route path="/" element={<Login />}></Route>
