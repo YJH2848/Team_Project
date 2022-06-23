@@ -54,5 +54,47 @@
 .nickname{
     text-align: center;
 }
-
+.line{
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.35);
+    font-size: 12px;
+    margin: 20px 33px;
+    width: 80%;
+}
+.line::before{
+    content: "";
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 16px;
+    
+}
+.line::after{
+    content: "";
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 16px;
+}
+.noemail{
+    width: 350px;
+    height: 63px;
+    border: 1px solid black;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.join{
+    text-decoration-line: none;
+    color: #00A2F8;
+    font-weight: bold;
+}
 /**/

@@ -73,7 +73,7 @@ const Login = () => {
                     </p>
                 </section>
             ) : (
-                <div className="login_container">
+                <div className="login_container" >
                     <section className='login_section'>
                         <img className="smart_img" src='https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png'></img>
                         <p ref={errRef} className={errMsg ? "errmsg" :
@@ -112,7 +112,11 @@ const Login = () => {
                                     </div>
 
                                     <button className='login_button'>로그인</button>
+                                    <div className='line'>
+                                        또는
+                                    </div>
                                 </form>
+
                                 {/* <div onSubmit={onImgInputBtnClick   }>
                                         <input
                                             ref={logoImgInput}
@@ -125,7 +129,11 @@ const Login = () => {
                                         />
 
                                     </div> */}
+
                             </div>
+                        </div>
+                        <div className='noemail'>
+                            계정이 없으신가요?&nbsp;<a href="#" className='join'>가입하기</a>
                         </div>
                     </section>
                 </div>

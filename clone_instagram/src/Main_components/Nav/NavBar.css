@@ -6,6 +6,7 @@ nav{
 }
 .navbar{
   width: 960px;
+  height: 50px;
   margin: auto;
   display: flex;
   justify-content: space-between;
