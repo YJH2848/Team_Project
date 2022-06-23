@@ -123,21 +123,6 @@ const Login = () => {
                                             placeholder="비밀번호"
                                         />
                                     </div>
- 
-                                    <div className="profile_image">
-                                        <label htmlFor="profile"></label>
-                                        <input
-                                            className='login_profile'
-                                            type="password"
-                                            id="password"
-                                            ref={userRef}
-                                            autoComplete="off"
-                                            onChange={(e) => setPwd(e.target.value)}
-                                            value={password}
-                                            required
-                                            placeholder="비밀번호"
-                                        />
-                                    </div>
                                     <button className='sign_button'>Sign In</button>
                                 </form>
                             </div>
